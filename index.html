@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>แบบประเมินคุณภาพของงาน</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    h1 { text-align: center; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; vertical-align: top; }
+    th { background-color: #f2f2f2; }
+    .score-select { width: 100%; }
+    #total-score { font-size: 20px; font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+<h1>แบบประเมินคุณภาพของงาน</h1>
+
+<form id="scoreForm">
+
+  <table>
+    <thead>
+      <tr>
+        <th>เกณฑ์การประเมิน</th>
+        <th>รายละเอียด</th>
+        <th>ให้คะแนน (1-5)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. ด้านองค์ประกอบ</td>
+        <td>ประเมินความครบถ้วน ความสอดคล้อง และการเชื่อมโยงของส่วนต่างๆ ในงาน</td>
+        <td>
+          <select name="score1" class="score-select">
+            <option value="0">-- เลือก --</option>
+            <option value="1">1 - ปรับปรุง</option>
+            <option value="2">2 - พอใช้</option>
+            <option value="3">3 - ปานกลาง</option>
+            <option value="4">4 - ดี</option>
+            <option value="5">5 - ดีมาก</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>2. ด้านเนื้อหาสาระ</td>
+        <td>ประเมินความหลากหลาย สมเหตุสมผล และความสอดคล้องกับเรื่อง</td>
+        <td>
+          <select name="score2" class="score-select">
+            <option value="0">-- เลือก --</option>
+            <option value="1">1 - ปรับปรุง</option>
+            <option value="2">2 - พอใช้</option>
+            <option value="3">3 - ปานกลาง</option>
+            <option value="4">4 - ดี</option>
+            <option value="5">5 - ดีมาก</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>3. ด้านภาษาและการใช้ถ้อยคำ</td>
+        <td>ประเมินการใช้ภาษาไทยให้ถูกต้องตามระดับชั้นและความชัดเจน</td>
+        <td>
+          <select name="score3" class="score-select">
+            <option value="0">-- เลือก --</option>
+            <option value="1">1 - ปรับปรุง</option>
+            <option value="2">2 - พอใช้</option>
+            <option value="3">3 - ปานกลาง</option>
+            <option value="4">4 - ดี</option>
+            <option value="5">5 - ดีมาก</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>4. ด้านกลวิธีการนำเสนอ</td>
+        <td>ประเมินความคิดสร้างสรรค์ เทคนิคการนำเสนอ และความน่าสนใจ</td>
+        <td>
+          <select name="score4" class="score-select">
+            <option value="0">-- เลือก --</option>
+            <option value="1">1 - ปรับปรุง</option>
+            <option value="2">2 - พอใช้</option>
+            <option value="3">3 - ปานกลาง</option>
+            <option value="4">4 - ดี</option>
+            <option value="5">5 - ดีมาก</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="button" onclick="calculateTotal()">รวมคะแนน</button>
+
+</form>
+
+<div id="total-score"></div>
+
+<script>
+  function calculateTotal() {
+    const form = document.getElementById("scoreForm");
+    let total = 0;
+    for (let i = 1; i <= 4; i++) {
+      total += parseInt(form["score" + i].value || 0);
+    }
+    document.getElementById("total-score").textContent = "รวมคะแนนทั้งหมด: " + total + " คะแนน";
+  }
+</script>
+
+</body>
+</html>
